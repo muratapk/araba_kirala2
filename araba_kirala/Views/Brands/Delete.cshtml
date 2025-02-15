@@ -1,0 +1,14 @@
+﻿@model araba_kirala.Models.Brands
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h1>Bu Kaydı Silmek İstiyor musunuz</h1>
+<form asp-action="Delete" asp-controller="Brands" >
+    <input type="hidden" asp-for="BrandID"/>
+    <input type="submit" value="Sil" class="form-control" />
+    <a asp-action="Index" asp-controller="Brands" class="btn btn-secondary">İptal</a>
+</form>

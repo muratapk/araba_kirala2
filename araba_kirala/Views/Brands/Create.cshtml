@@ -1,0 +1,34 @@
+﻿@model araba_kirala.Models.Brands
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+<form asp-action="Create" asp-controller="Brands" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label>Marka Adı</label>
+        <input type="text" asp-for="BrandName" class="form-control" />
+        <span asp-validation-for="BrandName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Model"></label>
+        <input type="text" asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ModelYear"></label>
+        <input type="text" asp-for="ModelYear" class="form-control" />
+        <span asp-validation-for="ModelYear" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DailyPrice"></label>
+        <input type="text" asp-for="DailyPrice" class="form-control" />
+        <span asp-validation-for="DailyPrice" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-secondary" value="Kaydet" />
+
+</form>
+

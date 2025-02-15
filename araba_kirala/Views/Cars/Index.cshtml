@@ -1,0 +1,48 @@
+﻿@model IEnumerable<araba_kirala.Models.Cars>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ColorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brands.BrandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colors.ColorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CarID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CarID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
