@@ -29,14 +29,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Brands.BrandName)
+                @Html.DisplayFor(modelItem => item.BrandID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Colors.ColorName)
+                @Html.DisplayFor(modelItem => item.ColorID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                    <img src="/Images/@item.Picture" height="100" width="100"/>
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CarID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CarID">Details</a> |

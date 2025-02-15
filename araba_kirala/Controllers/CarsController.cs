@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using araba_kirala.Data;
 using araba_kirala.Models;
+using System.Security.Cryptography;
 
 namespace araba_kirala.Controllers
 {
@@ -58,8 +59,39 @@ namespace araba_kirala.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarID,BrandID,ColorID,Status")] Cars cars)
+        public async Task<IActionResult> Create([Bind("CarID,BrandID,ColorID,Status")] Cars cars,IFormFile Dosya)
         {
+            
+
+            if(Dosya!=null)
+            {
+                var kabuledilen = new[] { "image/png", "image/gif", "image/jpeg", "image/jpg" };
+                //dizi oluşturduk veriler png gif jpeg
+                //başına ünlem koyarsanız false değeri verir
+                if (!kabuledilen.Contains(Dosya.ContentType))
+                {
+                    return View();
+                }
+                if(Dosya.Length>5*1024*1024)
+                {
+                    return View();
+                    //5 MegaByte 
+                }
+
+
+
+                var uzanti = Path.GetExtension(Dosya.FileName).ToLower();//resim.jpg jpg kısmını alır
+                var isim=Path.GetFileName(Dosya.FileName).ToLower();    //dosya isimini alır
+                var yeniad=Guid.NewGuid().ToString()+uzanti;
+                var yol = Path.Combine(Directory.GetCurrentDirectory() + "/wwwroot/Images/" + yeniad);
+                //resim dosyanın nerede yükleneceğini tarif
+                using (var stream =new FileStream(yol,FileMode.CreateNew))
+                {
+                    Dosya.CopyToAsync(stream);
+                }
+                cars.Picture = yeniad;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(cars);
@@ -92,8 +124,42 @@ namespace araba_kirala.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CarID,BrandID,ColorID,Status")] Cars cars)
+        public async Task<IActionResult> Edit(int id, [Bind("CarID,BrandID,ColorID,Status")] Cars cars,IFormFile Dosya)
         {
+            if (Dosya != null)
+            {
+                var kabuledilen = new[] { "image/png", "image/gif", "image/jpeg", "image/jpg" };
+                //dizi oluşturduk veriler png gif jpeg
+                //başına ünlem koyarsanız false değeri verir
+                if (!kabuledilen.Contains(Dosya.ContentType))
+                {
+                    return View();
+                }
+                if (Dosya.Length > 5 * 1024 * 1024)
+                {
+                    return View();
+                    //5 MegaByte 
+                }
+
+
+
+                var uzanti = Path.GetExtension(Dosya.FileName).ToLower();//resim.jpg jpg kısmını alır
+                var isim = Path.GetFileName(Dosya.FileName).ToLower();    //dosya isimini alır
+                var yeniad = Guid.NewGuid().ToString() + uzanti;
+                var yol = Path.Combine(Directory.GetCurrentDirectory() + "/wwwroot/Images/" + yeniad);
+                //resim dosyanın nerede yükleneceğini tarif
+                using (var stream = new FileStream(yol, FileMode.CreateNew))
+                {
+                    Dosya.CopyToAsync(stream);
+                }
+                cars.Picture = yeniad;
+            }
+
+
+
+
+
+
             if (id != cars.CarID)
             {
                 return NotFound();
