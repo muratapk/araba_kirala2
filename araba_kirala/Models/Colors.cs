@@ -7,6 +7,6 @@ namespace araba_kirala.Models
         [Key]
         public int ColorID { get; set; }
         public string ColorName { get; set; } = string.Empty;
-        virtual public List<Cars>? Cars { get; set; }
+        virtual public ICollection<Cars>? Cars { get; set; }
     }
 }

@@ -16,56 +16,15 @@
                         <div class="gallery_img"><img src="Images/@item.Picture"></div>
                         <h3 class="types_text">@item.BrandID</h3>
                         <p class="looking_text">@item.ColorID</p>
-                        <div class="read_bt"><a href="#">Book Now</a></div>
+                        <div class="read_bt"><a asp-action="Details" asp-controller="Home" asp-route-id="@item.CarID">Detay</a></div>
                     </div>
                 </div>
               }
 
-                <div class="col-md-4">
-                    <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-2.png"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                        <p class="looking_text">Start per day $4500</p>
-                        <div class="read_bt"><a href="#">Book Now</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-3.png"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                        <p class="looking_text">Start per day $4500</p>
-                        <div class="read_bt"><a href="#">Book Now</a></div>
-                    </div>
-                </div>
+               
+          
             </div>
         </div>
-        <div class="gallery_section_2">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-1.png"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                        <p class="looking_text">Start per day $4500</p>
-                        <div class="read_bt"><a href="#">Book Now</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-2.png"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                        <p class="looking_text">Start per day $4500</p>
-                        <div class="read_bt"><a href="#">Book Now</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-3.png"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                        <p class="looking_text">Start per day $4500</p>
-                        <div class="read_bt"><a href="#">Book Now</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
 </div>

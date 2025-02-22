@@ -13,7 +13,7 @@ namespace araba_kirala.Models
         public string Model { get; set; } = string.Empty;
         public int? ModelYear { get; set; } 
         public int? DailyPrice { get; set; }
-        virtual public List<Cars>? Cars { get; set; }
+        virtual public ICollection<Cars>? Cars { get; set; }
         //bir aracın birden fazla Markası olabilir
 
     }
