@@ -1,9 +1,10 @@
 ﻿using araba_kirala.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace araba_kirala.Data
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser, AppRole,int>
     {
         //classı üzerine gel ctrl . noktaya baş
         public Context(DbContextOptions<Context>options):base(options)
